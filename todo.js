@@ -8,19 +8,19 @@ let rowId = 0;
 
 
 function generateRowId() {
-  return ++rowId;
+    return ++rowId;
 }
-function enableAdd(){
+function enableAdd() {
     category = document.getElementById("drop1").value;;
     description = document.getElementById("desc1").value;
-    if(category && description){
+    if (category && description) {
         document.getElementById("add").disabled = false;
     }
 }
 function addTask() {
     debugger;
     generateRowId();
-    let tempArr = { rowid:rowId,category: category, desc: description, status: false }
+    let tempArr = { rowid: rowId, category: category, desc: description, status: false }
     valuearray.push(tempArr);
     console.log('values', valuearray)
     localStorage.setItem("savedArr", JSON.stringify(valuearray));
@@ -36,13 +36,13 @@ function resetValues() {
 }
 function CheckFunction(row) {
     debugger;
-    for(i=0;i<valuearray.length;i++){
-     if(valuearray[i].rowid === row){
-        valuearray[i].status = !valuearray[i].status;
-        break;
+    for (i = 0; i < valuearray.length; i++) {
+        if (valuearray[i].rowid === row) {
+            valuearray[i].status = !valuearray[i].status;
+            break;
+        }
+        localStorage.setItem("savedArr", JSON.stringify(valuearray))
     }
-    localStorage.setItem("savedArr", JSON.stringify(valuearray))
-}
 }
 function displayValues(array) {
     if (!array || array.length === 0) {
@@ -58,7 +58,7 @@ function displayValues(array) {
         rows += '<td>' + (i + 1) + '</td>';
         rows += '<td>' + array[i].category + '</td>';
         rows += '<td>' + array[i].desc + '</td>';
-        rows += '<td ><div class="form-check form-check-success "><input type="checkbox" class="form-check-input" ' + (array[i].status ? 'checked' : '') + '  id="check' + i + '" onchange="CheckFunction(' +array[i].rowid+ ')"></div></td>';
+        rows += '<td ><div class="form-check form-check-success "><input type="checkbox" class="form-check-input" ' + (array[i].status ? 'checked' : '') + '  id="check' + i + '" onchange="CheckFunction(' + array[i].rowid + ')"></div></td>';
         rows += '<td><button class="btn text-danger" onclick="DeleteRow(' + array[i].rowid + ')">Delete</button></td>';
         rows += '</tr>';
     }
@@ -67,8 +67,8 @@ function displayValues(array) {
 function DeleteRow(row) {
     debugger;
     console.log('val in d ', valuearray)
-    valuearray.forEach((element,index) => {
-        if(element.rowid === row){
+    valuearray.forEach((element, index) => {
+        if (element.rowid === row) {
             valuearray.splice(index, 1);
         }
     });
@@ -108,11 +108,11 @@ function PendingClicked() {
 }
 function clearCompleted() {
     debugger;
-    valuearray.forEach((element,index) => {
-        if(element.status === true){
-            valuearray.splice(index,1)
-        } ;
-    });
+    for (let i = valuearray.length - 1; i >= 0; i--) {
+        if (valuearray[i].status === true) {
+            valuearray.splice(i, 1);
+        }
+    }
     localStorage.setItem("savedArr", JSON.stringify(valuearray));
     if (completedFlag) {
         CompletedClicked();
