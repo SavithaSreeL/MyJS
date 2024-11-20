@@ -10,7 +10,7 @@
 <body>
     <div  class="text-center mt-3">
         <h3>Basic ToDo List App</h3>
-    </div>
+    </div>  
     <div class="card m-4 ">
       <div class="card-header">
       Add task
@@ -19,7 +19,7 @@
      <form>
         <div class="d-flex gap-4 ">
             <div class="">
-        <select id="drop1"  class="form-select ">
+        <select id="drop1"  class="form-select " oninput="enableAdd()">
             <option value="" disabled selected>Select Category</option>
             <option value="Work">Work</option>
             <option value="Personal">Personal</option>
@@ -29,7 +29,7 @@
         </select>
     </div>
     <div>
-        <input id="desc1" type="text" class="form-control" placeholder="Enter description">
+        <input id="desc1" type="text" class="form-control" placeholder="Enter description" oninput="enableAdd()">
     </div>
     <div >
         <button id="add" type="button" class="btn btn-primary" onclick="addTask()"><span >Add task</span><i class="fa fa-add ps-2"></i></button>
