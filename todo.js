@@ -58,7 +58,7 @@ function displayValues(array) {
         rows += '<td>' + (i + 1) + '</td>';
         rows += '<td>' + array[i].category + '</td>';
         rows += '<td>' + array[i].desc + '</td>';
-        rows += '<td ><div class="form-check form-check-success "><input type="checkbox" class="form-check-input" ' + (array[i].status ? 'checked' : '') + '  id="check' + i + '" onchange="CheckFunction(' + array[i].rowid + ')"></div></td>';
+        rows += '<td ><div class="form-check form-check-success "><input type="checkbox" style="border: #8d8d8d solid 1px" class="form-check-input" ' + (array[i].status ? 'checked' : '') + '  id="check' + i + '" onchange="CheckFunction(' + array[i].rowid + ')"></div></td>';
         rows += '<td><button class="btn text-danger" onclick="DeleteRow(' + array[i].rowid + ')">Delete</button></td>';
         rows += '</tr>';
     }
